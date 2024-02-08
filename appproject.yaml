@@ -1,0 +1,10 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: ocpvirt
+  namespace: openshift-gitops
+spec:
+  destinations:
+  - name: '*'
+    namespace: '*'
+    server: '*'

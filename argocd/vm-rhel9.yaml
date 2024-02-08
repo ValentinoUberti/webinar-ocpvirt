@@ -15,13 +15,13 @@ metadata:
         }
       ]
   labels:
-    app: webinar-rhel9
+    app: argo-webinar-rhel9
     kubevirt.io/dynamic-credentials-support: "true"
     vm.kubevirt.io/template: rhel9-server-small
     vm.kubevirt.io/template.namespace: openshift
     vm.kubevirt.io/template.revision: "1"
     vm.kubevirt.io/template.version: v0.26.0
-  name: webinar-rhel9
+  name: argo-webinar-rhel9
   namespace: ocpvirt
 spec:
   dataVolumeTemplates:
@@ -29,7 +29,7 @@ spec:
     kind: DataVolume
     metadata:
       creationTimestamp: null
-      name: webinar-rhel9
+      name: argo-webinar-rhel9
     spec:
       sourceRef:
         kind: DataSource
@@ -48,7 +48,7 @@ spec:
         vm.kubevirt.io/workload: server
       creationTimestamp: null
       labels:
-        kubevirt.io/domain: webinar-rhel9
+        kubevirt.io/domain: argo-webinar-rhel9
         kubevirt.io/size: small
     spec:
       architecture: amd64
@@ -83,7 +83,7 @@ spec:
       terminationGracePeriodSeconds: 180
       volumes:
       - dataVolume:
-          name: webinar-rhel9
+          name: argo-webinar-rhel9
         name: rootdisk
       - cloudInitConfigDrive:
           userData: |-
