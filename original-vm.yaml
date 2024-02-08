@@ -14,8 +14,10 @@ metadata:
           "min": 1610612736
         }
       ]
-
-
+  creationTimestamp: "2024-01-22T15:32:49Z"
+  finalizers:
+  - kubevirt.io/virtualMachineControllerFinalize
+  generation: 1
   labels:
     app: webinar
     kubevirt.io/dynamic-credentials-support: "true"
@@ -24,7 +26,9 @@ metadata:
     vm.kubevirt.io/template.revision: "1"
     vm.kubevirt.io/template.version: v0.26.0
   name: webinar
-
+  namespace: webinar
+  resourceVersion: "841625901"
+  uid: 2398d2d3-e3d6-4a3b-804c-6bd5b973dc54
 spec:
   dataVolumeTemplates:
   - apiVersion: cdi.kubevirt.io/v1beta1
@@ -68,7 +72,7 @@ spec:
               bus: virtio
             name: cloudinitdisk
           interfaces:
-          - macAddress: 02:c4:54:00:01:16
+          - macAddress: 02:c4:54:00:00:16
             masquerade: {}
             model: virtio
             name: default
@@ -98,6 +102,31 @@ spec:
           userData: |-
             #cloud-config
             user: cloud-user
-            password: cloud-user-webinar
+            password: be5l-8rwt-o1qf
             chpasswd: { expire: False }
         name: cloudinitdisk
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2024-01-22T15:32:55Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: null
+    status: "True"
+    type: LiveMigratable
+  - lastProbeTime: "2024-01-22T15:33:21Z"
+    lastTransitionTime: null
+    status: "True"
+    type: AgentConnected
+  created: true
+  desiredGeneration: 1
+  observedGeneration: 1
+  printableStatus: Running
+  ready: true
+  volumeSnapshotStatuses:
+  - enabled: true
+    name: rootdisk
+  - enabled: false
+    name: cloudinitdisk
+    reason: Snapshot is not supported for this volumeSource type [cloudinitdisk]
