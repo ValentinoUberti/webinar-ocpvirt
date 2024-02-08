@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ssh
+spec:
+  selector:
+    kubevirt.io/domain: webinar-rhel9
+  ports:
+    - port: 22
+      targetPort: 22
+  type: LoadBalancer
+  externalTrafficPolicy: "Local"

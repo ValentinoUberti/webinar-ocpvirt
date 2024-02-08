@@ -1,0 +1,20 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: vs-backend
+  namespace: vm-servicemesh
+spec:
+  hosts:
+  - application.apps.ocp.seeweb.local
+  gateways:
+  - webinar-gateway
+  http:
+  - route:
+    - destination:
+        host: backend
+        subset: v1
+      weight: 0
+    - destination:
+        host: backend
+        subset: v2
+      weight: 100
