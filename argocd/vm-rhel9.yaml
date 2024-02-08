@@ -79,6 +79,7 @@ spec:
           guest: 2Gi
       networks:
       - name: default
+        pod: {}
       terminationGracePeriodSeconds: 180
       volumes:
       - dataVolume:
